@@ -10,4 +10,4 @@ RUN for PYTHON_VERSION in 2 3; do \
     done ; \
     mkdir -p /notebooks
 
-ENTRYPOINT [ "/usr/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "python3", "-m", "notebook", "--no-browser", "--ip=*" , "--notebook-dir=/notebooks"]
+ENTRYPOINT [ "/usr/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "python3", "-m", "notebook", "--allow-root", "--no-browser", "--ip=*" , "--notebook-dir=/notebooks"]

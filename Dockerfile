@@ -1,4 +1,4 @@
-FROM nanshe/nanshe:latest
+FROM nanshe/nanshe:sge
 MAINTAINER John Kirkham <jakirkham@gmail.com>
 
 RUN for PYTHON_VERSION in 2 3; do \

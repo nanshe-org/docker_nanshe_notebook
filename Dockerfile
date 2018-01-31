@@ -8,7 +8,8 @@ RUN for PYTHON_VERSION in 2 3; do \
         conda install -qy -n root notebook && \
         python -m ipykernel install && \
         conda clean -tipsy && \
-        . ${INSTALL_CONDA_PATH}/bin/deactivate ; \
+        . ${INSTALL_CONDA_PATH}/bin/deactivate && \
+        rm -rf ~/.conda ; \
     done
 
 ENTRYPOINT [ "/opt/conda/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "python3", "-m", "notebook", "--allow-root", "--no-browser", "--ip=*" , "--notebook-dir=/notebooks" ]

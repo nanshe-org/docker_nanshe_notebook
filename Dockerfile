@@ -10,6 +10,7 @@ RUN for PYTHON_VERSION in 2 3; do \
         python -m ipykernel install --prefix "/opt/conda2" && \
         python -m ipykernel install --prefix "/opt/conda3" && \
         conda install -qy ipywidgets && \
+        conda install -qy jupyter_contrib_nbextensions && \
         conda clean -tipsy && \
         conda deactivate && \
         rm -rf ~/.conda ; \

@@ -4,12 +4,13 @@ MAINTAINER John Kirkham <jakirkham@gmail.com>
 RUN for PYTHON_VERSION in 2 3; do \
         mkdir -p /notebooks && \
         export INSTALL_CONDA_PATH="/opt/conda${PYTHON_VERSION}" && \
-        . ${INSTALL_CONDA_PATH}/bin/activate && \
+        . "${INSTALL_CONDA_PATH}/etc/profile.d/conda.sh" && \
+        conda activate base && \
         conda install -qy notebook && \
         python -m ipykernel install --prefix "/opt/conda2" && \
         python -m ipykernel install --prefix "/opt/conda3" && \
         conda clean -tipsy && \
-        . ${INSTALL_CONDA_PATH}/bin/deactivate && \
+        conda deactivate && \
         rm -rf ~/.conda ; \
     done
 

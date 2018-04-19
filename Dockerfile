@@ -5,7 +5,7 @@ RUN for PYTHON_VERSION in 2 3; do \
         mkdir -p /notebooks && \
         export INSTALL_CONDA_PATH="/opt/conda${PYTHON_VERSION}" && \
         . ${INSTALL_CONDA_PATH}/bin/activate && \
-        conda install -qy -n root notebook && \
+        conda install -qy notebook && \
         python -m ipykernel install --prefix "/opt/conda2" && \
         python -m ipykernel install --prefix "/opt/conda3" && \
         conda clean -tipsy && \

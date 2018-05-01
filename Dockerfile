@@ -7,13 +7,17 @@ RUN for PYTHON_VERSION in 2 3; do \
         . "${INSTALL_CONDA_PATH}/etc/profile.d/conda.sh" && \
         conda activate base && \
         conda install -qy notebook && \
-        python -m ipykernel install --prefix "/opt/conda2" && \
-        python -m ipykernel install --prefix "/opt/conda3" && \
         conda install -qy ipywidgets && \
         conda install -qy jupyter_contrib_nbextensions && \
         conda install -qy nbconvert && \
         conda clean -tipsy && \
         conda deactivate && \
+        python${PYTHON_VERSION} -m ipykernel install --name "python${PYTHON_VERSION}" --prefix "/opt/conda2" && \
+        sed -i "s/\/opt\/conda${PYTHON_VERSION}\/bin\/python/\/usr\/local\/bin\/python${PYTHON_VERSION}/g" \
+               "/opt/conda2/share/jupyter/kernels/python${PYTHON_VERSION}/kernel.json" && \
+        python${PYTHON_VERSION} -m ipykernel install --name "python${PYTHON_VERSION}" --prefix "/opt/conda3" && \
+        sed -i "s/\/opt\/conda${PYTHON_VERSION}\/bin\/python/\/usr\/local\/bin\/python${PYTHON_VERSION}/g" \
+               "/opt/conda3/share/jupyter/kernels/python${PYTHON_VERSION}/kernel.json" && \
         rm -rf ~/.conda ; \
     done
 

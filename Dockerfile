@@ -10,6 +10,7 @@ RUN for PYTHON_VERSION in 2 3; do \
         conda install -qy ipywidgets && \
         conda install -qy jupyter_contrib_nbextensions && \
         conda install -qy nbconvert && \
+        conda install -qy nbserverproxy && \
         conda clean -tipsy && \
         conda deactivate && \
         python${PYTHON_VERSION} -m ipykernel install --name "python${PYTHON_VERSION}" --prefix "/opt/conda2" && \

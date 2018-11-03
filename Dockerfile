@@ -6,7 +6,6 @@ RUN for PYTHON_VERSION in 2 3; do \
         export INSTALL_CONDA_PATH="/opt/conda${PYTHON_VERSION}" && \
         . "${INSTALL_CONDA_PATH}/etc/profile.d/conda.sh" && \
         conda activate base && \
-        echo "tornado 5.0.2" >> "${INSTALL_CONDA_PATH}/conda-meta/pinned" && \
         conda install -qy notebook && \
         conda install -qy ipywidgets && \
         conda install -qy jupyter_contrib_nbextensions && \

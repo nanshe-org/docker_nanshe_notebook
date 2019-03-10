@@ -1,6 +1,8 @@
 FROM nanshe/nanshe:latest
 MAINTAINER John Kirkham <jakirkham@gmail.com>
 
+ADD entrypoint.sh /usr/share/docker/entrypoint_2.sh
+
 RUN for PYTHON_VERSION in 2 3; do \
         mkdir -p /notebooks && \
         export INSTALL_CONDA_PATH="/opt/conda${PYTHON_VERSION}" && \

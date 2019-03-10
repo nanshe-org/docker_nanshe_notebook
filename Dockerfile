@@ -1,6 +1,8 @@
 FROM nanshe/nanshe:sge
 MAINTAINER John Kirkham <jakirkham@gmail.com>
 
+ADD entrypoint.sh /usr/share/docker/entrypoint_3.sh
+
 RUN for PYTHON_VERSION in 2 3; do \
         mkdir -p /notebooks && \
         export INSTALL_CONDA_PATH="/opt/conda${PYTHON_VERSION}" && \
@@ -22,4 +24,4 @@ RUN for PYTHON_VERSION in 2 3; do \
         rm -rf ~/.conda ; \
     done
 
-ENTRYPOINT [ "/opt/conda/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "/usr/share/docker/entrypoint_2.sh", "python", "-m", "notebook", "--allow-root", "--no-browser", "--ip=0.0.0.0" , "--notebook-dir=/notebooks" ]
+ENTRYPOINT [ "/opt/conda/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "/usr/share/docker/entrypoint_2.sh", "/usr/share/docker/entrypoint_3.sh", "python", "-m", "notebook", "--allow-root", "--no-browser", "--ip=0.0.0.0", "--notebook-dir=/notebooks" ]

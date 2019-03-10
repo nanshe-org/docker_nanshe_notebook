@@ -22,4 +22,4 @@ RUN for PYTHON_VERSION in 2 3; do \
         rm -rf ~/.conda ; \
     done
 
-ENTRYPOINT [ "/opt/conda/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "python", "-m", "notebook", "--allow-root", "--no-browser", "--ip=0.0.0.0" , "--notebook-dir=/notebooks" ]
+ENTRYPOINT [ "/opt/conda/bin/tini", "--", "/usr/share/docker/entrypoint.sh", "python", "-m", "notebook", "--allow-root", "--no-browser", "--ip=0.0.0.0", "--notebook-dir=/notebooks" ]
